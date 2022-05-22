@@ -3,6 +3,11 @@
   src: local('B-Nazanin'), url(./fonts/B-NAZANIN.TTF) format('truetype');
 }
 
+:root{
+  --white:#fff;
+  --black:#000;
+}
+
 *{
   margin: 0;
   padding: 0;
