@@ -33,8 +33,12 @@ const Header = ({type}) => {
                 [name]: operation === "i" ? options[name] + 1 :options[name] - 1,
             }
         })
-      }
+      };
+      //useNavigate for serch on hotels bar
+      const Navigate =useNavigate()''
+      const handelSearch = () =>{
 
+      }
       
     return (
         <div className="header bg-primary text-light d-flex justify-content-center">
@@ -135,7 +139,7 @@ const Header = ({type}) => {
                 </div>
               
                 <div className="headSearchItem">
-               <button type="button" className="btn btn-primary">جستجو</button>
+               <button type="button" onClick={handelSearch} className="btn btn-primary">جستجو</button>
 
 
                 </div>

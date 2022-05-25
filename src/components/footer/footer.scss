@@ -1,0 +1,21 @@
+.footer{
+    width: 100%;
+    font-size: 12px;
+    padding: 50px 0;
+
+    .list{
+        list-style: none;
+
+        .fListItem{
+            margin-bottom: 10px;
+            color:#003580;
+            cursor: pointer;
+        }
+    }
+
+    .fText{
+        text-align: center;
+        color:rgb(67, 134, 67);
+    }
+}
+

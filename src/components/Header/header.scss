@@ -63,6 +63,7 @@
                     .date{
                         position: absolute;
                         top: 50px;
+                        z-index: 2;
                     }
                 }
             }
@@ -74,6 +75,7 @@
                 border-radius:5px ;
                 -webkit-box-shadow: -1px 0px 10px 0px #000000; 
                 box-shadow: -1px 0px 10px 0px #000000;
+                z-index: 2;
 
                 .optionItem{
                     width: 200px;

@@ -8,11 +8,16 @@ import {roomHome} from "../../Dummy";
 const Featured = () => {
     return (
         <div className="featured">
-            <div className="featuredItem">
-                <img src={room1} alt="" />
-                <h1>دوبلکس</h1>
-                <h2>شماره 112</h2>
-            </div>
+                {
+                  roomHome.map((val)=>(
+                    <div className="featuredItem">
+                      <img src={val.cover} alt="" />
+                      <h1>{val.title}</h1>
+                      <h2>{val.number}</h2>
+                    </div>
+                  ))  
+                }
+           
         </div>
     );
 };
