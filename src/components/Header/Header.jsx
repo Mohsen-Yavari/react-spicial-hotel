@@ -1,4 +1,5 @@
 import React,{useState } from 'react';
+import {Link} from "react-router-dom";
 
 import "./header.scss";
 
@@ -7,9 +8,11 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format} from "date-fns";
+import { useNavigate } from 'react-router-dom';
 
 const Header = ({type}) => {
     //for date
+    const [destination,setDestination] = useState("");
     const [opanDate,setOpenDate] = useState(false);
     const [date, setDate] = useState([
         {
@@ -25,6 +28,9 @@ const Header = ({type}) => {
         children:0,
         room:1,
       });
+
+      const navigate = useNavigate();
+
       //for r0om negative our positive
       const handelOption = (name,operation)=>{
         setOptions((prev)=>{
@@ -35,19 +41,32 @@ const Header = ({type}) => {
         })
       };
       //useNavigate for serch on hotels bar
-      const Navigate =useNavigate()''
-      const handelSearch = () =>{
+  
 
+      const handelSearch = () =>{
+        navigate("/hotels",{ state:{destination,date,options} })
       }
       
     return (
         <div className="header bg-primary text-light d-flex justify-content-center">
             <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
             <div className="headerList d-flex ">
+           
                 <div className="headerListItem active">
-                <i class="ri-hotel-bed-fill"></i>
-                <span>ماندن</span>
+                
+                <i class="ri-home-3-line"></i>
+                <Link to="/">
+                <span>خانه</span>
+                </Link>
                 </div>
+                <div className="headerListItem ">
+                
+                <i class="ri-hotel-bed-fill"></i>
+                <Link to="/hotelsroom">
+                <span>هتل</span>
+                </Link>
+                </div>
+                
                 <div className="headerListItem">
                 <i class="ri-flight-takeoff-line"></i>
                 <span>پرواز</span>
@@ -65,6 +84,7 @@ const Header = ({type}) => {
                 <span>تاکسی فرودگاه</span>
                 </div>
             </div>
+            
             { type !== "list" &&
                 <>
                 <h1 className="HeaderTitle">یک عالمه تخفیف با ما</h1>
@@ -78,15 +98,18 @@ const Header = ({type}) => {
                 <input 
                 type="text" 
                 className="headerSearchInput" 
-                placeholder="کجا میخای بری؟" />
+                placeholder="کجا میخای بری؟" 
+                onChange={(e)=>setDestination(e.target.value)}
+                />
                 
                 </div>
                 <div className="headSearchItem">
-                <i class="ri-calendar-event-line"></i>
+              <i className="ri-calendar-event-line" />
+
                 <span onClick={()=> setOpenDate(!opanDate)} 
                 className="headerSearchText">
-                    {`${format(date[0].startDate,"سال /ماه/روز")} 
-                    تا ${format(date[0].endDate,"سال/ماه/روز")} `}
+                    {`${format(date[0].startDate,"yyyy/dd/mm")} 
+                    تا ${format(date[0].endDate,"yyyy/dd/mm")} `}
                     </span>
                 {/* //datevrenge for clender */}
                 {opanDate && <DateRange
@@ -95,10 +118,13 @@ const Header = ({type}) => {
                 moveRangeOnFirstSelection={false}
                 ranges={date}
                 className="date"
+                minDate={new Date()}
+
                 />}
                 </div>
                 <div className="headSearchItem">
-                <i class="ri-group-fill"></i>
+              <i className="ri-group-fill" />
+
                 <span onClick={()=>setOpenOptions(!openOptions)} className="headerSearchText">{`${options.adult} بزرگسال . ${options.children} بچه . ${options.room} اتاق`}</span>
                 {openOptions && <div className="options">
                     <div className="optionItem  d-flex justify-content-between">

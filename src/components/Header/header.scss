@@ -16,7 +16,12 @@
             .headerListItem{
                 display: flex;
                 align-items: center;
-                gap: 10px;    
+                gap: 10px;  
+                
+                a{
+                    color:var(--white);
+                    text-decoration:none;
+                }
             }
             
         }

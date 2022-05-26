@@ -58,6 +58,11 @@ export const Property = [
         title:"دوبلکس",
         number:"شماره 77",
     },
+    {
+        cover:p6,
+        title:"دوبلکس",
+        number:"شماره 77",
+    },
    
     
 ]
